@@ -59,71 +59,502 @@
         }
 
         .wrap {
-            width: 1800px;
+            max-width: 1800px;
+            width: 95%;
             margin: 20px auto 0px auto;
         }
 
         .card > img {
             height: 700px;
         }
+
+        .mypost {
+            max-width: 500px;
+            width: 95%;
+
+            margin: 20px auto 0 auto;
+
+            box-shadow: 0 0 3px 0;
+            padding: 20px;
+        }
+
+        .mybtn {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 20px;
+
+
+        }
+
+        .mybtn > button {
+            margin-right: 20px;
+            border: 1px solid black;
+        }
+
+        #floatingTextarea {
+            height: 200px;
+        }
     </style>
+    <script>
+        let mise_list = [
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "도심권",
+                MSRSTE_NM: "중구",
+                PM10: 22,
+                PM25: 14,
+                O3: 0.018,
+                NO2: 0.015,
+                CO: 0.4,
+                SO2: 0.002,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 31,
+                ARPLT_MAIN: "O3",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "도심권",
+                MSRSTE_NM: "종로구",
+                PM10: 24,
+                PM25: 18,
+                O3: 0.013,
+                NO2: 0.016,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 39,
+                ARPLT_MAIN: "PM25",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "도심권",
+                MSRSTE_NM: "용산구",
+                PM10: 0,
+                PM25: 15,
+                O3: 0.012,
+                NO2: 0.027,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "점검중",
+                IDEX_MVL: -99,
+                ARPLT_MAIN: "점검중",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서북권",
+                MSRSTE_NM: "은평구",
+                PM10: 36,
+                PM25: 14,
+                O3: 0.019,
+                NO2: 0.018,
+                CO: 0.5,
+                SO2: 0.005,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 42,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서북권",
+                MSRSTE_NM: "서대문구",
+                PM10: 28,
+                PM25: 9,
+                O3: 0.018,
+                NO2: 0.015,
+                CO: 0.6,
+                SO2: 0.004,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 37,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서북권",
+                MSRSTE_NM: "마포구",
+                PM10: 26,
+                PM25: 8,
+                O3: 0.012,
+                NO2: 0.021,
+                CO: 0.5,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 36,
+                ARPLT_MAIN: "NO2",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "광진구",
+                PM10: 17,
+                PM25: 9,
+                O3: 0.018,
+                NO2: 0.016,
+                CO: 0.6,
+                SO2: 0.001,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 31,
+                ARPLT_MAIN: "O3",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "성동구",
+                PM10: 21,
+                PM25: 12,
+                O3: 0.018,
+                NO2: 0.017,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 33,
+                ARPLT_MAIN: "PM25",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "중랑구",
+                PM10: 27,
+                PM25: 10,
+                O3: 0.015,
+                NO2: 0.019,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 34,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "동대문구",
+                PM10: 26,
+                PM25: 9,
+                O3: 0.016,
+                NO2: 0.017,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 34,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "성북구",
+                PM10: 27,
+                PM25: 8,
+                O3: 0.022,
+                NO2: 0.014,
+                CO: 0.5,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 37,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "도봉구",
+                PM10: 25,
+                PM25: 12,
+                O3: 0.024,
+                NO2: 0.011,
+                CO: 0.3,
+                SO2: 0.002,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 41,
+                ARPLT_MAIN: "O3",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "강북구",
+                PM10: 30,
+                PM25: 15,
+                O3: 0.022,
+                NO2: 0.02,
+                CO: 0.4,
+                SO2: 0.002,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 39,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동북권",
+                MSRSTE_NM: "노원구",
+                PM10: 21,
+                PM25: 14,
+                O3: 0.017,
+                NO2: 0.016,
+                CO: 0.4,
+                SO2: 0.004,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 36,
+                ARPLT_MAIN: "PM25",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "강서구",
+                PM10: 36,
+                PM25: 16,
+                O3: 0.021,
+                NO2: 0.013,
+                CO: 0.4,
+                SO2: 0.004,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 42,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "구로구",
+                PM10: 23,
+                PM25: 10,
+                O3: 0.022,
+                NO2: 0.016,
+                CO: 0.3,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 37,
+                ARPLT_MAIN: "O3",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "영등포구",
+                PM10: 29,
+                PM25: 15,
+                O3: 0.01,
+                NO2: 0.022,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 41,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "동작구",
+                PM10: 29,
+                PM25: 15,
+                O3: 0.012,
+                NO2: 0.023,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 41,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "관악구",
+                PM10: 27,
+                PM25: 12,
+                O3: 0.012,
+                NO2: 0.022,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 37,
+                ARPLT_MAIN: "NO2",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "금천구",
+                PM10: 25,
+                PM25: 15,
+                O3: 0.015,
+                NO2: 0.02,
+                CO: 0.4,
+                SO2: 0.004,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 43,
+                ARPLT_MAIN: "PM25",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "서남권",
+                MSRSTE_NM: "양천구",
+                PM10: 0,
+                PM25: 14,
+                O3: 0.016,
+                NO2: 0.017,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "점검중",
+                IDEX_MVL: -99,
+                ARPLT_MAIN: "점검중",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동남권",
+                MSRSTE_NM: "강남구",
+                PM10: 31,
+                PM25: 16,
+                O3: 0.018,
+                NO2: 0.018,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 39,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동남권",
+                MSRSTE_NM: "서초구",
+                PM10: 34,
+                PM25: 13,
+                O3: 0.024,
+                NO2: 0.019,
+                CO: 0.3,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 41,
+                ARPLT_MAIN: "PM10",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동남권",
+                MSRSTE_NM: "송파구",
+                PM10: 25,
+                PM25: 6,
+                O3: 0.014,
+                NO2: 0.025,
+                CO: 0.4,
+                SO2: 0.003,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 42,
+                ARPLT_MAIN: "NO2",
+            },
+            {
+                MSRDT: "201912052100",
+                MSRRGN_NM: "동남권",
+                MSRSTE_NM: "강동구",
+                PM10: 24,
+                PM25: 14,
+                O3: 0.016,
+                NO2: 0.02,
+                CO: 0.4,
+                SO2: 0.002,
+                IDEX_NM: "좋음",
+                IDEX_MVL: 39,
+                ARPLT_MAIN: "PM25",
+            },
+        ];
+
+        for (let i = 0; i < mise_list.length; i++) {
+            if (mise_list[i]['IDEX_MVL'] < 40) {
+                console.log(mise_list[i]['MSRSTE_NM']);
+            }
+        }
+
+
+    </script>
 </head>
 <body>
-    <div class="mytitle">
-        <h1>내 생에 최고의 영화</h1>
-        <button>영화 기록하기🔥</button>
+<div class="mytitle">
+    <h1>내 생에 최고의 영화</h1>
+    <button>영화 기록하기</button>
+</div>
+<div class="mypost">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">영화URL</label>
     </div>
-    <div class="wrap">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col">
-                <div class="card">
-                    <img src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">탑건(매버릭)</h5>
-                        <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에 나서는데…</p>
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p class="mycomment">꼭 한번 보세요.</p>
-                    </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">별점</label>
+        <select class="form-select" id="inputGroupSelect01">
+            <option selected>--선택하기--</option>
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+    </div>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">코멘트</label>
+    </div>
+    <div class="mybtn">
+        <button type="button" class="btn btn-dark">기록하기</button>
+        <button type="button" class="btn btn-light">닫기</button>
+    </div>
+
+</div>
+<div class="wrap">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">탑건(매버릭)</h5>
+                    <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를
+                                         무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를
+                                         쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에
+                                         나서는데…</p>
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <p class="mycomment">꼭 한번 보세요.</p>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Top_Gun_Maverick_Poster.jpg/220px-Top_Gun_Maverick_Poster.jpg"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">탑건(매버릭)</h5>
-                        <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에 나서는데…</p>
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p class="mycomment">한번 보셨으면 두번 보세요.</p>
-                    </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Top_Gun_Maverick_Poster.jpg/220px-Top_Gun_Maverick_Poster.jpg"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">탑건(매버릭)</h5>
+                    <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를
+                                         무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를
+                                         쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에
+                                         나서는데…</p>
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <p class="mycomment">한번 보셨으면 두번 보세요.</p>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000082/82120/82120203763_727.jpg"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">탑건(매버릭)</h5>
-                        <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에 나서는데…</p>
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p class="mycomment">두번 봤으면 세...</p>
-                    </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000082/82120/82120203763_727.jpg"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">탑건(매버릭)</h5>
+                    <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를
+                                         무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를
+                                         쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에
+                                         나서는데…</p>
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <p class="mycomment">두번 봤으면 세...</p>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="images/TopGun4.PNG"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">탑건(매버릭)</h5>
-                        <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에 나서는데…</p>
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p class="mycomment">네...</p>
-                    </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/TopGun4.PNG"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">탑건(매버릭)</h5>
+                    <p class="card-text">최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. 그의 명성을 모르던 팀원들은 매버릭의 지시를
+                                         무시하지만 실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. 매버릭의 지휘아래 견고한 팀워크를
+                                         쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 매버릭은 자신이 가르친 동료들과 함께 마지막이 될 지 모를 하늘 위 비행에
+                                         나서는데…</p>
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <p class="mycomment">네...</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
