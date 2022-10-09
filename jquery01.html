@@ -51,6 +51,35 @@
 // 1. names-q3의 내부 태그를 모두 비운다.(jQuery의 $('....').empty()를 이용하면 굿!)
             $('#names-q3').empty();
         }
+
+        /*연습*/
+
+        function plus() {
+            let plus = parseInt($('#plus_fisrt_num').val()) + parseInt($('#plus_second_num').val());
+            alert(plus);
+        }
+
+        function sub() {
+            let sub = parseInt($('#sub_first_num').val()) - parseInt($('#sub_second_num').val());
+            alert(sub);
+        }
+
+        function mul() {
+            let mul = parseInt($('#mul_first_num').val()) * parseInt($('#mul_second_num').val());
+            alert(mul);
+        }
+
+        function div() {
+            let div = parseInt($('#div_first_num').val()) / parseInt($('#div_second_num').val());
+            alert(div);
+        }
+
+        function rem() {
+            let rem = parseInt($('#rem_first_num').val()) % parseInt($('#rem_second_num').val());
+            alert(rem);
+        }
+        /*연습*/
+
     </script>
 </head>
 <body>
@@ -84,5 +113,44 @@
             <li>임꺽정</li>
         </ul>
     </div>
+
+    <!--연습-->
+
+    <div>
+        <h2>4. 계산기 만들기</h2>
+        <div>
+            <h5>4-1 더하기</h5>
+            <input type="number" id="plus_fisrt_num">
+            <input type="number" id="plus_second_num">
+            <button onclick="plus()">계산</button>
+        </div>
+        <div>
+            <h5>4-1 빼기</h5>
+            <input type="number" id="sub_first_num">
+            <input type="number" id="sub_second_num">
+            <button onclick="sub()">계산</button>
+        </div>
+        <div>
+            <h5>4-1 곱하기</h5>
+            <input type="number" id="mul_first_num">
+            <input type="number" id="mul_second_num">
+            <button onclick="mul()">계산</button>
+        </div>
+        <div>
+            <h5>4-1 나누기</h5>
+            <input type="number" id="div_first_num">
+            <input type="number" id="div_second_num">
+            <button onclick="div()">계산</button>
+        </div>
+        <div>
+            <h5>4-1 나머지</h5>
+            <input type="number" id="rem_first_num">
+            <input type="number" id="rem_second_num">
+            <button onclick="rem()">계산</button>
+        </div>
+    </div>
+
+    <!--연습-->
+
     </body>
 </html>
