@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+    <script>
+        $.ajax({
+            type: "GET",
+            url: "http://spartacodingclub.shop/sparta_api/seoulair",
+            data: {},
+            success: function (response) {
+                let mise_list = response["RealtimeCityAir"]["row"];
+                for (let i = 0; i < mise_list.length; i++) {
+                    let mise = mise_list[i];
+                    let gu_name = mise["MSRSTE_NM"];
+                    let gu_mise = mise["IDEX_MVL"];
+                    console.log(gu_name, gu_mise);
+                }
+            }
+        });
+    </script>
+</head>
+<body>
