@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+	var class_list = [
+		{title: "JavaScript란?", done: true},
+		{title: "Node.js란?", done: true},
+		{title: "동기(Sync) & 비동기(Async)", done: false},
+		{title: "객체 리터럴", done: true},
+		{title: "Error handling", done: true},
+		{title: "클래스(Class)", done: true},
+		{title: "HTTP의 이해", done: true},
+		{title: "Package Manager", done: true},
+	];
+
+
+
+	for (let i = 0; i < class_list.length; i++) {
+		document.write(class_list[i].title);
+		document.write(" - ")
+		if (class_list[i].done == true) {
+			document.write("checked")
+		} else {
+			document.write("not yet")
+		}
+		document.write("<br/>")
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
